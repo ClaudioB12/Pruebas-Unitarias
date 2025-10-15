@@ -14,10 +14,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import pe.edu.upeu.sysalmacen.dtos.UsuarioDTO;
 import pe.edu.upeu.sysalmacen.modelo.Marca;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(webEnvironment =
-        SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace =AutoConfigureTestDatabase.Replace.NONE)
 @Slf4j
 public class MarcaControllerIntegrateTest {
     @Autowired
@@ -140,4 +140,5 @@ public class MarcaControllerIntegrateTest {
                 .extract().body().asString();
         Assertions.assertNotNull(idCreado);
     }
+
 }

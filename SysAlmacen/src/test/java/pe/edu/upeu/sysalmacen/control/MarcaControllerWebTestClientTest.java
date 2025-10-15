@@ -24,16 +24,15 @@ public class MarcaControllerWebTestClientTest {
     @Autowired
     private WebTestClient webTestClient;
     private String token;
-    Logger logger = Logger.getLogger(MarcaControllerWebTestClientTest.class.getName());
+    Logger logger =  Logger.getLogger(MarcaControllerWebTestClientTest.class.getName());
     Marca marca;
     Long idx;
 
     @BeforeEach
     public void setUp() {
         System.out.println("Puerto x:" + this.port);
-        UsuarioDTO.UsuarioCrearDto udto = new
-                UsuarioDTO.UsuarioCrearDto("eliasmp@upeu.edu.pe",
-                "Da123456*".toCharArray(), "ADMIN", "Activo");
+        UsuarioDTO.UsuarioCrearDto udto = new UsuarioDTO.UsuarioCrearDto("eliasmp@upeu.edu.pe", "Da123456*".toCharArray(),
+                "ADMIN", "Activo");
         try {
             var dd = webTestClient.post()
                     .uri("/users/login")
@@ -87,6 +86,7 @@ public class MarcaControllerWebTestClientTest {
                 .jsonPath("$").isArray();
         //.jsonPath("$").value(Matchers.hasSize(5));
     }
+
     @Transactional
     @Test
     @Order(2)
@@ -113,6 +113,7 @@ public class MarcaControllerWebTestClientTest {
         }
         System.out.println("DATO:" + idx);
     }
+
     @Transactional
     @Test
     @Order(3)
@@ -135,6 +136,7 @@ public class MarcaControllerWebTestClientTest {
                 .exchange()
                 .expectStatus().isOk();
     }
+
     @Test
     @Order(4)
     public void testBuscarMarca() {
@@ -155,6 +157,7 @@ public class MarcaControllerWebTestClientTest {
                 .expectBody()
                 .jsonPath("$.nombre").isEqualTo("AdidasY");
     }
+
     @Test
     @Order(5)
     public void testEliminarMarca() {

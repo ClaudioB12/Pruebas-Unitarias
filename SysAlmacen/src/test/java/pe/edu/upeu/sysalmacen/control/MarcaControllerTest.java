@@ -18,6 +18,7 @@ import pe.edu.upeu.sysalmacen.servicio.IMarcaService;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
+
 @ExtendWith(MockitoExtension.class)
 public class MarcaControllerTest {
     @Mock
@@ -28,8 +29,7 @@ public class MarcaControllerTest {
     private MarcaController marcaController;
     private Marca marca;
     private MarcaDTO marcaDTO;
-    private static final Logger logger =
-            Logger.getLogger(MarcaControllerTest.class.getName());
+    private static final Logger logger = Logger.getLogger(MarcaControllerTest.class.getName());
     List<Marca> marcas;
 
     @BeforeEach
@@ -38,10 +38,12 @@ public class MarcaControllerTest {
                 .idMarca(1L)
                 .nombre("Marca A")
                 .build();
+
         marcaDTO = MarcaDTO.builder()
                 .idMarca(1L)
                 .nombre("Marca A")
                 .build();
+
         marcas=List.of(marca);
     }
 
@@ -54,7 +56,6 @@ public class MarcaControllerTest {
         );
         //when
         ResponseEntity<List<MarcaDTO>> lp=marcaController.findAll();
-        //then
         // Then
         Assertions.assertEquals(HttpStatus.OK, lp.getStatusCode());
         Assertions.assertNotNull(lp.getBody());
@@ -91,7 +92,6 @@ public class MarcaControllerTest {
         Assertions.assertTrue(response.getBody().getMessage().equals("true"));
         Assertions.assertTrue(response.getBody().getDetails().contains("1"));
     }
-
     @Test
     void testUpdate_ReturnsUpdatedMarcaDTO_WithHttpStatusOK() {
         Long id = 1L;
@@ -120,5 +120,4 @@ public class MarcaControllerTest {
         Assertions.assertEquals(customResponse, response.getBody());
         BDDMockito.then(marcaService).should().delete(id);
     }
-
 }

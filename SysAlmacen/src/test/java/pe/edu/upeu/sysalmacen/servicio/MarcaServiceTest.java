@@ -14,6 +14,7 @@ import pe.edu.upeu.sysalmacen.servicio.impl.MarcaServiceImp;
 import java.util.List;
 import java.util.Optional;
 import static org.mockito.BDDMockito.*;
+
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MarcaServiceTest {
@@ -93,7 +94,6 @@ public class MarcaServiceTest {
         Assertions.assertThat(pd.getMessage()).isEqualTo("true");
     }
 
-
     @Order(5)
     @DisplayName("Eliminar Marca Id no Existe")
     @Test
@@ -107,4 +107,6 @@ public class MarcaServiceTest {
                 .isInstanceOf(ModelNotFoundException.class)
                 .hasMessageContaining("ID NOT FOUND: "+idInexistente);
     }
+
 }
+
